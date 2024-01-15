@@ -102,4 +102,4 @@ RUN set -eux; \
 COPY entrypoint.sh /__cacert_entrypoint.sh
 ENTRYPOINT ["/__cacert_entrypoint.sh"]
 
-CMD ["jshell"]
+#CMD ["jshell"]
