@@ -93,13 +93,13 @@ RUN set -eux; \
     # https://openjdk.java.net/jeps/341
     java -Xshare:dump;
 
-RUN set -eux; \
+RUN set -eux; \ 
     echo "Verifying install ..."; \
     fileEncoding="$(echo 'System.out.println(System.getProperty("file.encoding"))' | jshell -s -)"; [ "$fileEncoding" = 'UTF-8' ]; rm -rf ~/.java; \
     echo "javac --version"; javac --version; \
     echo "java --version"; java --version; \
     echo "Complete."
 COPY entrypoint.sh /__cacert_entrypoint.sh
-ENTRYPOINT ["/__cacert_entrypoint.sh"]
-
+ENTRYPOINT ["/__cacert_entrypoint.sh" "start"]
+ 
 CMD ["jshell"]
